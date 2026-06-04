@@ -12,7 +12,11 @@ dotenv.config();
 
 export const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://order-system-frontend-theta.vercel.app/', // your Vercel URL
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 app.use('/api/menu', menuRouter);
